@@ -1,0 +1,19 @@
+version: 2
+updates:
+- package-ecosystem: pip
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "04:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: matplotlib
+    versions:
+    - 3.3.4
+    - 3.4.0
+  - dependency-name: mysql-connector-python
+    versions:
+    - 8.0.23
+  - dependency-name: lxml
+    versions:
+    - 4.6.2
