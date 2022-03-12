@@ -26,7 +26,7 @@ class IMAPException(Exception):
 
 
 def parse_email(content, destination_folder, reports_downloaded=[]):
-    m = email.message_from_string(content)
+    m = email.message_from_bytes(content)
     message_subject = str(email.header.decode_header(m['Subject'])[0][0])
     #
     # FIXME: At this point some checking could be done to validate this is actually
@@ -116,6 +116,7 @@ class ReportDownloader(object):
                 raise IMAPException("Error selecting label!")
 
         # Search for all emails matching the read/unread criteria:
+        self._mailbox.select()
         rv, data = self._mailbox.search(None, self._search_param)
         if rv != "OK":
             print("ERROR: Problem searching for emails!")

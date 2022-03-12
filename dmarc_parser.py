@@ -166,7 +166,7 @@ def save_rdns_records(rdns_records, rdns_filename='rdns.pickle', rdns_directory=
 def load_rdns_records(rdns_filename='rdns.pickle', rdns_directory="./results"):
     filepath = os.path.join(rdns_directory, rdns_filename)
     if os.path.isfile(filepath):
-        with open(filepath) as f:
+        with open(filepath, "rb") as f:
             print("INFO: Loading Saved rDNS Records.")
             return pickle.load(f)
     else:
